@@ -1,0 +1,160 @@
+---
+title: "dades alquilers Barcelona"
+author: "mtp1268"
+date: "16/1/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Es carrega el dataset preus lloguers
+
+```{r}
+# Es procesa els preus dels lloguers del 2014 al 2022:
+aa_22 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/e96bf614-467b-40ab-91b9-e48a616ea775/download/2022_lloguer_preu_trim.csv")
+aa_21 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/cfc45f2b-62eb-4621-8486-1b90e36b4bfe/download/2021_lloguer_preu_trim.csv")
+aa_20 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/47c9d64d-317a-45d0-8c45-45488df8601c/download/2020_lloguer_preu_trim.csv")
+aa_19 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/004c76b1-6269-4136-89b2-89fd47046930/download/2019_lloguer_preu_trim.csv")
+aa_18 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/3dc45b16-42a9-4f57-9863-e6d1a4f5869f/download/2018_lloguer_preu_trim.csv")
+aa_17 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/0a71a12d-55fa-4a76-b816-4ee55f84d327/download/2017_lloguer_preu_trim.csv")
+aa_16 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/b45e8b56-1988-4474-bf61-0a76f8ab28c2/download/2016_lloguer_preu_trim.csv")
+aa_15 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/fcdbfa43-d97a-4da3-b78b-6f255dbcf4cc/download/2015_lloguer_preu_trim.csv")
+aa_14 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/69c3250b-100c-4d5b-a08e-0a191d9950e3/resource/5855ba6c-f554-4a99-837a-04ea69bc71f4/download/2014_lloguer_preu_trim.csv")
+
+# Es detecta que als datasets seguents la columna any te altre format:
+colnames(aa_21)[1] <- "Any"
+colnames(aa_20)[1] <- "Any"
+
+
+preus_lloguer <- rbind(aa_22,aa_21,aa_20,aa_19,aa_18,aa_17,aa_16,aa_15,aa_14)
+```
+
+## Es carrega el dataset compraventa
+
+```{r}
+# Es procesa el nombre compra venta d'habitatges del 2014 al 2022:
+aa_22 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/7b7eea69-3260-4050-822f-a6d9b8037f2b/download/2022_comp_vend_hab_trim.csv")
+aa_21 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/9893e344-aa7e-4f9d-8b5f-b58ef6944cc7/download/2021_comp_vend_hab_trim.csv")
+aa_20 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/cc09a6c7-fac9-4c9f-84e0-a4998da513b1/download/2020_comp_vend_hab_trim.csv")
+aa_19 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/c985cff8-d7ab-442f-ba03-c26b9a95b91c/download/2019_comp_vend_hab_trim.csv")
+aa_18 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/dc5fc748-b42a-4149-bb7c-240f8988c509/download/2018_comp_vend_hab_trim.csv")
+aa_17 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/64418bc0-cca5-4622-9a27-2a82d904f131/download/2017_comp_vend_hab_trim.csv")
+aa_16 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/f8cd07a2-61dc-4b52-b03a-52907328302f/download/2016_comp_vend_hab_trim.csv")
+aa_15 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/a6eda217-ac9a-4d87-ae56-95a8981d2941/download/2015_comp_vend_hab_trim.csv")
+aa_14 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/3f3dfe32-b19b-451b-84ff-3835b6b63701/resource/11f1554a-9946-4236-834d-c8bf9272534c/download/2014_comp_vend_hab_trim.csv")
+
+# Es detecta que als datasets seguents la columna any te altre format:
+colnames(aa_21)[1] <- "Any"
+colnames(aa_20)[1] <- "Any"
+
+comp_venta <- rbind(aa_22,aa_21,aa_20,aa_19,aa_18,aa_17,aa_16,aa_15,aa_14)
+```
+
+
+## Es carrega el dataset alquilers
+
+```{r}
+# Es procesa el nombre de lloguers d'habitatges del 2014 al 2022:
+aa_22 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/f4df7fbb-387b-4f15-a5d5-78583a85ab0b/download/2022_lloguer_cont_trim.csv")
+aa_21 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/d89d86ee-ed69-4276-88db-586f08770f3f/download/2021_lloguer_cont_trim.csv")
+aa_20 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/951ee1a0-5105-4e8c-a459-3ef7b7cc2ed6/download/2020_lloguer_cont_trim.csv")
+aa_19 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/c9431614-c34c-4050-9bb3-aabb5973d452/download/2019_lloguer_cont_trim.csv")
+aa_18 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/cf09f303-c266-4e73-bdfc-65a7b91b1ad6/download/2018_lloguer_cont_trim.csv")
+aa_17 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/4776a63c-718a-4e5b-9811-9dae920dc0a1/download/2017_lloguer_cont_trim.csv")
+aa_16 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/3c7e77a0-dca4-49d6-bab8-bd25ba1b93b3/download/2016_lloguer_cont_trim.csv")
+aa_15 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/279b8ad0-5b0d-4104-8e55-acacf3cf0986/download/2015_lloguer_cont_trim.csv")
+aa_14 <- read.csv("https://opendata-ajuntament.barcelona.cat/data/dataset/e39200e2-29f2-4ffd-8edd-b4dba69622a2/resource/ef227aab-9f51-426d-a547-2ea9d8d18806/download/2014_lloguer_cont_trim.csv")
+
+# Es detecta que als datasets seguents la columna any te altre format:
+colnames(aa_21)[1] <- "Any"
+colnames(aa_20)[1] <- "Any"
+
+colnames(aa_21)[7] <- "Contractes"
+colnames(aa_20)[7] <- "Contractes"
+
+lloguer <- rbind(aa_22,aa_21,aa_20,aa_19,aa_18,aa_17,aa_16,aa_15,aa_14)
+```
+
+
+## Es mostra la informació dels datasets
+
+```{r}
+head(preus_lloguer)
+head(comp_venta)
+head(lloguer)
+```
+
+## Es mostra el resum dels datasets
+
+```{r}
+summary(preus_lloguer)
+summary(comp_venta)
+summary(lloguer)
+```
+
+
+## Es prepara els dataset final
+Ens quedem amb els camps del dataset per a fer el inner join i els camps per complimentar el dataset original:
+
+```{r}
+comp_venta <- comp_venta[,c("Any", "Trimestre", "Codi_Districte", "Codi_Barri","Compravendes","Nombre")]
+
+lloguer <- lloguer[,c("Any", "Trimestre", "Codi_Districte", "Codi_Barri","Contractes","Nombre")]
+```
+
+
+En aquest punt s'ha detectat que els accents no estan bé, per corregir-ho:
+
+```{r}
+Encoding(preus_lloguer$Nom_Districte) <- "UTF-8"
+Encoding(preus_lloguer$Nom_Barri) <- "UTF-8"
+
+```
+
+Es mergea les taules per a tenir un dataset definitiu
+
+```{r}
+df <- merge(preus_lloguer,comp_venta, by=c("Any", "Trimestre", "Codi_Districte", "Codi_Barri"))
+
+df2 <- merge(df,lloguer, by=c("Any", "Trimestre", "Codi_Districte", "Codi_Barri"))
+
+df3 <- df2[,-c(3,4,7,11)]
+
+# Es renomba les columnes nombres dels diferents datasets del inner
+colnames(df3)[7] <- "compra_venta"
+colnames(df3)[8] <- "lloguers"
+
+remove(aa_22,aa_21,aa_20,aa_19,aa_18,aa_17,aa_16,aa_15,aa_14,preus_lloguer,comp_venta,lloguer)
+
+
+head(df3)
+```
+
+## data cleaning
+
+Es trasnforma els camps que son numerics ja que actualment estan com strings:
+```{r}
+df3$Preu <- as.numeric(df3$Preu)
+df3$compra_venta <- as.numeric(df3$compra_venta)
+df3$lloguers <- as.numeric(df3$lloguers)
+
+```
+
+
+Es concidera que valors NA no s'han de tenir en compte per a calcular operacions aritmetiques i per tant es treuen del dataset:
+
+```{r}
+df4 <- na.omit(df3)
+```
+
+
+## Es genera el fitxer CSV
+
+Es crea el CSV amb la taula definitiva per a carregarla al seguent proces
+
+```{r}
+write.csv2(df4,"../data/alquilers-barcelona.csv", row.names = FALSE, fileEncoding = "UTF-8")
+```
+
