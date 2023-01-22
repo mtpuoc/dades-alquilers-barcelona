@@ -55,26 +55,26 @@ ui <- dashboardPage(
               h2("Evolució dels preus de Barcelona"),
               fluidRow(
                 # A static valueBox
-                valueBox(paste(mitjana,"e/m2"), width = 4, "Preu del m2 a la provincia de Barcelona durant el any 2022.", icon = icon("credit-card")),
-                valueBox(paste("+",diff,"%"), width = 4, "Evolució del m2 del segon trimestre respecte al tercer de l'any 2022", icon = icon("credit-card")),
-                valueBox(paste("+",diff_any,"%"), width = 4, "Evolució del m2 de l'any 2022 respecte al 2021", icon = icon("credit-card"))
+                valueBox(paste(mitjana,"e/m2"), width = 4, "Preu del m2 a la provincia de Barcelona durant el any 2022.", icon = icon("home")),
+                valueBox(paste("+",diff,"%"), width = 4, "Evolució del m2 del segon trimestre respecte al tercer de l'any 2022", icon = icon("home")),
+                valueBox(paste("+",diff_any,"%"), width = 4, "Evolució del m2 de l'any 2022 respecte al 2021", icon = icon("home"))
               ),
               fluidRow(
                 # A static valueBox
-                valueBox(paste(barri_max$Preu,"e/m2"), width = 4, paste("Es el preu més alt del 2022 i es troba al districte:",barri_max$Nom_Districte,"-",barri_max$Nom_Barri), icon = icon("credit-card")),
-                valueBox(paste(barri_min$Preu,"e/m2"), width = 4, paste("Es el preu més baix del 2022 i es troba al districte:",barri_min$Nom_Districte,"-",barri_min$Nom_Barri), icon = icon("credit-card")),
+                valueBox(paste(barri_max$Preu,"e/m2"), width = 4, paste("Es el preu més alt del 2022 i es troba al districte:",barri_max$Nom_Districte,"-",barri_max$Nom_Barri), icon = icon("arrow-up")),
+                valueBox(paste(barri_min$Preu,"e/m2"), width = 4, paste("Es el preu més baix del 2022 i es troba al districte:",barri_min$Nom_Districte,"-",barri_min$Nom_Barri), icon = icon("arrow-down")),
               ),
-              h2("Nombres de Compra-venta a Barcelona"),
+              h2("Nombres de compra-venta a Barcelona"),
               fluidRow(
                 # A static valueBox
-                valueBox(cv_max$Nom_Districte, width = 4, paste("Es el districte amb més compra-venta(",cv_max$compra_venta,"), el barri:",cv_max$Nom_Barri), icon = icon("credit-card")),
-                valueBox(cv_min$Nom_Districte, width = 4, paste("Es el districte amb menys compra-venta(",cv_min$compra_venta,"), el barri:",barri_max$Nom_Barri), icon = icon("credit-card")),
+                valueBox(cv_max$Nom_Districte, width = 4, paste("Es el districte amb més compra-venta(",cv_max$compra_venta,"), el barri:",cv_max$Nom_Barri), icon = icon("repeat"),color = "green"),
+                valueBox(cv_min$Nom_Districte, width = 4, paste("Es el districte amb menys compra-venta(",cv_min$compra_venta,"), el barri:",barri_max$Nom_Barri), icon = icon("repeat"),color = "green"),
               ),
-              h2("Nombres de Lloguer a Barcelona"),
+              h2("Nombres de lloguer a Barcelona"),
               fluidRow(
                 # A static valueBox
-                valueBox(ll_max$Nom_Districte, width = 4, paste("Es el districte amb més lloguer(",ll_max$lloguers,"), el barri:",ll_max$Nom_Barri), icon = icon("credit-card")),
-                valueBox(ll_min$Nom_Districte, width = 4, paste("Es el districte amb menys lloguer(",ll_min$lloguers,"), el barri:",ll_min$Nom_Barri), icon = icon("credit-card")),
+                valueBox(ll_max$Nom_Districte, width = 4, paste("Es el districte amb més lloguer(",ll_max$lloguers,"), el barri:",ll_max$Nom_Barri), icon = icon("check"),color = "teal"),
+                valueBox(ll_min$Nom_Districte, width = 4, paste("Es el districte amb menys lloguer(",ll_min$lloguers,"), el barri:",ll_min$Nom_Barri), icon = icon("check"), color = "teal"),
               )
       ),
       
@@ -117,7 +117,8 @@ ui <- dashboardPage(
               column(3,selectInput("districteT", "Selecciona el nom del districte", append("Tots",alquiler_barcelona$Nom_Districte))),
               column(5,uiOutput("selectionTaulaBarri"))
           ),
-          dataTableOutput('tableAlquiler')
+          dataTableOutput('tableAlquiler'),
+          downloadButton("downloadData", "Download")
         )
       )
     )
@@ -188,7 +189,7 @@ server <- function(input, output) {
       }
     }
     a <- aggregate(tmp_cv$compra_venta,by=list(tmp_cv$Any),FUN=sum)
-    bp <- barplot(a$x,names.arg=a$Group.1,xlab="Any",ylab="Nombre",main=main)
+    bp <- barplot(a$x,names.arg=a$Group.1,xlab="Any",ylab="Nombre",main=main, col = "green")
     text(bp, a$x/2,labels=round(a$x,digits=2))
   })
   output$barplot_lloguer <- renderPlot({
@@ -204,7 +205,7 @@ server <- function(input, output) {
       }
     }
     a <-aggregate(tmp_ll$lloguers,by=list(tmp_ll$Any),FUN=sum)
-    bp <- barplot(a$x,names.arg=a$Group.1,xlab="Any",ylab="Nombre",main=main)
+    bp <- barplot(a$x,names.arg=a$Group.1,xlab="Any",ylab="Nombre",main=main, col="#008080")
     text(bp, a$x/2,labels=round(a$x,digits=2))
   })
   
@@ -222,6 +223,15 @@ server <- function(input, output) {
     }
     df_taula
   })
+  
+  output$downloadData <- downloadHandler(
+    filename = function() {
+      paste(input$dataset, ".csv", sep = "")
+    },
+    content = function(file) {
+      write.csv(output$tableAlquiler, file, row.names = FALSE)
+    }
+  )
 }
 
 shinyApp(ui, server)
