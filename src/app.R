@@ -4,8 +4,6 @@
 library(shiny)
 library(shinydashboard)
 
-#alquiler_barcelona <- df4
-
 #alquiler_barcelona <- read.csv2("./data/alquilers-barcelona", sep=";", fileEncoding = "UTF-8")
 
 df_2022 <- alquiler_barcelona[alquiler_barcelona$Any==2022,]
