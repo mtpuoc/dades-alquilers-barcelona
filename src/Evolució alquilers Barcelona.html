@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:3817/ -->
+<html style="height: auto;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <script type="application/shiny-singletons"></script>
+  <script type="application/html-dependencies">jquery[3.6.0];shiny-css[1.7.4];shiny-javascript[1.7.4];font-awesome[6.2.0];selectize[0.12.4];datatables[1.10.5];datatables-bootstrap[1.10.5];bootstrap[3.4.1];AdminLTE[2.0.6];shinydashboard[0.7.2]</script>
+<script src="./Evolució alquilers Barcelona_files/jquery.min.js.descarga"></script>
+<link href="./Evolució alquilers Barcelona_files/shiny.min.css" rel="stylesheet">
+<script src="./Evolució alquilers Barcelona_files/shiny.min.js.descarga"></script>
+<link href="./Evolució alquilers Barcelona_files/all.min.css" rel="stylesheet">
+<link href="./Evolució alquilers Barcelona_files/v4-shims.min.css" rel="stylesheet">
+<link href="./Evolució alquilers Barcelona_files/selectize.bootstrap3.css" rel="stylesheet">
+<script src="./Evolució alquilers Barcelona_files/selectize.min.js.descarga"></script>
+<script src="./Evolució alquilers Barcelona_files/selectize-plugin-a11y.min.js.descarga"></script>
+<script src="./Evolució alquilers Barcelona_files/jquery.dataTables.min.js.descarga"></script>
+<link href="./Evolució alquilers Barcelona_files/dataTables.bootstrap.css" rel="stylesheet">
+<link href="./Evolució alquilers Barcelona_files/dataTables.extra.css" rel="stylesheet">
+<script src="./Evolució alquilers Barcelona_files/dataTables.bootstrap.js.descarga"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./Evolució alquilers Barcelona_files/bootstrap.min.css" rel="stylesheet">
+<link href="./Evolució alquilers Barcelona_files/bootstrap-accessibility.min.css" rel="stylesheet">
+<script src="./Evolució alquilers Barcelona_files/bootstrap.min.js.descarga"></script>
+<script src="./Evolució alquilers Barcelona_files/bootstrap-accessibility.min.js.descarga"></script>
+<link href="./Evolució alquilers Barcelona_files/AdminLTE.min.css" rel="stylesheet">
+<link href="./Evolució alquilers Barcelona_files/_all-skins.min.css" rel="stylesheet">
+<script src="./Evolució alquilers Barcelona_files/app.min.js.descarga"></script>
+<link href="./Evolució alquilers Barcelona_files/shinydashboard.css" rel="stylesheet">
+<script src="./Evolució alquilers Barcelona_files/shinydashboard.min.js.descarga"></script>  <title>Evolució alquilers Barcelona</title>
+  <style>
+      @media (min-width: 768px) {
+        .main-header > .navbar {
+          margin-left: 300px;
+        }
+        .main-header .logo {
+          width: 300px;
+        }
+      }
+    </style>
+  <style>
+      .main-sidebar, .left-side {
+        width: 300px;
+      }
+      @media (min-width: 768px) {
+        .content-wrapper,
+        .right-side,
+        .main-footer {
+          margin-left: 300px;
+        }
+        .main-sidebar,
+        .left-side {
+          width: 300px;
+        }
+      }
+      @media (max-width: 767px) {
+        .sidebar-open .content-wrapper,
+        .sidebar-open .right-side,
+        .sidebar-open .main-footer {
+          -webkit-transform: translate(300px, 0);
+          -ms-transform: translate(300px, 0);
+          -o-transform: translate(300px, 0);
+          transform: translate(300px, 0);
+        }
+      }
+      @media (max-width: 767px) {
+        .main-sidebar,
+        .left-side {
+          -webkit-transform: translate(-300px, 0);
+          -ms-transform: translate(-300px, 0);
+          -o-transform: translate(-300px, 0);
+          transform: translate(-300px, 0);
+        }
+      }
+      @media (min-width: 768px) {
+        .sidebar-collapse .main-sidebar,
+        .sidebar-collapse .left-side {
+          -webkit-transform: translate(-300px, 0);
+          -ms-transform: translate(-300px, 0);
+          -o-transform: translate(-300px, 0);
+          transform: translate(-300px, 0);
+        }
+      }
+    </style>
+</head>
+<body class="skin-blue" style="min-height: 611px; height: auto;">
+  <div class="wrapper" style="height: auto;">
+    <header class="main-header">
+      <span class="logo">Evolució alquilers Barcelona</span>
+      <nav class="navbar navbar-static-top" role="navigation">
+        <span style="display:none;">
+          <i class="fas fa-bars" role="presentation" aria-label="bars icon"></i>
+        </span>
+        <a href="http://127.0.0.1:3817/#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav"></ul>
+        </div>
+      </nav>
+    </header>
+    <aside id="sidebarCollapsed" class="main-sidebar shiny-bound-input" data-collapsed="false">
+      <section id="sidebarItemExpanded" class="sidebar shiny-bound-input">
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a href="http://127.0.0.1:3817/#shiny-tab-overview" data-toggle="tab" data-value="overview" aria-expanded="true" tabindex="0" aria-selected="true">
+              <span>Resum</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://127.0.0.1:3817/#shiny-tab-preus" data-toggle="tab" data-value="preus">
+              <span>Preus</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://127.0.0.1:3817/#shiny-tab-compra-venta" data-toggle="tab" data-value="compra-venta">
+              <span>Compra venta</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://127.0.0.1:3817/#shiny-tab-lloguers" data-toggle="tab" data-value="lloguers">
+              <span>Lloguers</span>
+            </a>
+          </li>
+          <li>
+            <a href="http://127.0.0.1:3817/#shiny-tab-taula" data-toggle="tab" data-value="taula">
+              <span>Taula dataset</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <div class="content-wrapper" style="min-height: 495px;">
+      <section class="content">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="shiny-tab-overview" aria-hidden="false" tabindex="0">
+            <h1>Resum</h1>
+            <div>En aquest espai es mostra l'evolució dels preus del m2 de Barcelona i dels nombre de lloguers i compra-venta que s'han fet trimestralment a partir del 2014.</div>
+            <hr>
+            <div>Tota aquesta informació s'ha tret de la web de Barcelona de opensource on hi ha hagut un data-quality on s'han omes els registres que hi havia algún valor 
+              sense informar ja que per a la realització dels calculs es necesari tenir els valors informats.</div>
+            <h2>Evolució dels preus de Barcelona</h2>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>497.65 e/m2</h3>
+                    <p>Preu del m2 a la provincia de Barcelona durant el any 2022.</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-house" role="presentation" aria-label="house icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>+ 6.87 %</h3>
+                    <p>Evolució del m2 del segon trimestre respecte al tercer de l'any 2022</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-house" role="presentation" aria-label="house icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>+ 10.14 %</h3>
+                    <p>Evolució del m2 de l'any 2022 respecte al 2021</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-house" role="presentation" aria-label="house icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>1990.2 e/m2</h3>
+                    <p>Es el preu més alt del 2022 i es troba al districte: Sarrià-Sant Gervasi - les Tres Torres</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-arrow-up" role="presentation" aria-label="arrow-up icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>3.9 e/m2</h3>
+                    <p>Es el preu més baix del 2022 i es troba al districte: Sants-Montjuïc - la Marina del Prat Vermell</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-arrow-down" role="presentation" aria-label="arrow-down icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2>Nombres de compra-venta a Barcelona</h2>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3>Gràcia</h3>
+                    <p>Es el districte amb més compra-venta( 165 ), el barri: la Vila de Gràcia</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-repeat" role="presentation" aria-label="repeat icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3>Sant Martí</h3>
+                    <p>Es el districte amb menys compra-venta( 1 ), el barri: les Tres Torres</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-repeat" role="presentation" aria-label="repeat icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h2>Nombres de lloguer a Barcelona</h2>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="small-box bg-teal">
+                  <div class="inner">
+                    <h3>Gràcia</h3>
+                    <p>Es el districte amb més lloguer( 677 ), el barri: la Vila de Gràcia</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-check" role="presentation" aria-label="check icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="small-box bg-teal">
+                  <div class="inner">
+                    <h3>Nou Barris</h3>
+                    <p>Es el districte amb menys lloguer( 6 ), el barri: Torre Baró</p>
+                  </div>
+                  <div class="icon-large">
+                    <i class="fas fa-check" role="presentation" aria-label="check icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="shiny-tab-preus">
+            <div class="row">
+              <h2>Preus d'alquilers</h2>
+              <div class="col-sm-10">
+                <div class="box box-solid box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Filtrar</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="col-sm-4">
+                      <div class="form-group shiny-input-container">
+                        <label class="control-label" id="districte-label" for="districte-selectized">Selecciona el nom del districte</label>
+                        <div>
+                          <select id="districte" tabindex="-1" class="selectized shiny-bound-input" style="display: none;"><option value="Tots" selected="selected">Tots</option></select><div class="selectize-control single plugin-selectize-plugin-a11y"><div class="selectize-input items full has-options has-items"><div class="item" data-value="Tots">Tots</div><input type="text" autocomplete="off" tabindex="" id="districte-selectized" role="combobox" aria-expanded="false" haspopup="listbox" aria-owns="dh0gy3ixc6" style="width: 4px;"></div><div class="selectize-dropdown single plugin-selectize-plugin-a11y" style="display: none;"><div class="selectize-dropdown-content" role="listbox" id="dh0gy3ixc6"></div></div></div>
+                          <script type="application/json" data-for="districte" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div id="selectionPreusBarri" class="shiny-html-output shiny-bound-output" aria-live="polite"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-plot-output html-fill-item shiny-bound-output" id="plot_preus" style="width:100%;height:400px;" aria-live="polite"></div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="shiny-tab-compra-venta">
+            <div class="row">
+              <h2>Compra venta</h2>
+              <div class="col-sm-10">
+                <div class="box box-solid box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Filtrar</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="col-sm-4">
+                      <div class="form-group shiny-input-container">
+                        <label class="control-label" id="districteCV-label" for="districteCV-selectized">Selecciona el nom del districte</label>
+                        <div>
+                          <select id="districteCV" tabindex="-1" class="selectized shiny-bound-input" style="display: none;"><option value="Tots" selected="selected">Tots</option></select><div class="selectize-control single plugin-selectize-plugin-a11y"><div class="selectize-input items full has-options has-items"><div class="item" data-value="Tots">Tots</div><input type="text" autocomplete="off" tabindex="" id="districteCV-selectized" role="combobox" aria-expanded="false" haspopup="listbox" aria-owns="fnp5oevkro" style="width: 4px;"></div><div class="selectize-dropdown single plugin-selectize-plugin-a11y" style="display: none;"><div class="selectize-dropdown-content" role="listbox" id="fnp5oevkro"></div></div></div>
+                          <script type="application/json" data-for="districteCV" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div id="selectionCVBarri" class="shiny-html-output shiny-bound-output" aria-live="polite"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-plot-output html-fill-item shiny-bound-output" id="barplot_cv" style="width:100%;height:400px;" aria-live="polite"></div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="shiny-tab-lloguers">
+            <div class="row">
+              <h2>Lloguers</h2>
+              <div class="col-sm-10">
+                <div class="box box-solid box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Filtrar</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="col-sm-4">
+                      <div class="form-group shiny-input-container">
+                        <label class="control-label" id="districteLL-label" for="districteLL-selectized">Selecciona el nom del districte</label>
+                        <div>
+                          <select id="districteLL" tabindex="-1" class="selectized shiny-bound-input" style="display: none;"><option value="Tots" selected="selected">Tots</option></select><div class="selectize-control single plugin-selectize-plugin-a11y"><div class="selectize-input items full has-options has-items"><div class="item" data-value="Tots">Tots</div><input type="text" autocomplete="off" tabindex="" id="districteLL-selectized" role="combobox" aria-expanded="false" haspopup="listbox" aria-owns="vwavorxysh" style="width: 4px;"></div><div class="selectize-dropdown single plugin-selectize-plugin-a11y" style="display: none;"><div class="selectize-dropdown-content" role="listbox" id="vwavorxysh"></div></div></div>
+                          <script type="application/json" data-for="districteLL" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div id="selectionLloguersBarri" class="shiny-html-output shiny-bound-output" aria-live="polite"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-plot-output html-fill-item shiny-bound-output" id="barplot_lloguer" style="width:100%;height:400px;" aria-live="polite"></div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="shiny-tab-taula">
+            <div class="row">
+              <h2>Taula</h2>
+              <div class="col-sm-11">
+                <div class="box box-solid box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Filtrar</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="col-sm-3">
+                      <div class="form-group shiny-input-container">
+                        <label class="control-label" id="anyTaula-label" for="anyTaula-selectized">Selecciona l'any</label>
+                        <div>
+                          <select id="anyTaula" tabindex="-1" class="selectized shiny-bound-input" style="display: none;"><option value="Tots" selected="selected">Tots</option></select><div class="selectize-control single plugin-selectize-plugin-a11y"><div class="selectize-input items full has-options has-items"><div class="item" data-value="Tots">Tots</div><input type="text" autocomplete="off" tabindex="" id="anyTaula-selectized" role="combobox" aria-expanded="false" haspopup="listbox" aria-owns="q1mvzcmsjl" style="width: 4px;"></div><div class="selectize-dropdown single plugin-selectize-plugin-a11y" style="display: none;"><div class="selectize-dropdown-content" role="listbox" id="q1mvzcmsjl"></div></div></div>
+                          <script type="application/json" data-for="anyTaula" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group shiny-input-container">
+                        <label class="control-label" id="districteT-label" for="districteT-selectized">Selecciona el nom del districte</label>
+                        <div>
+                          <select id="districteT" tabindex="-1" class="selectized shiny-bound-input" style="display: none;"><option value="Tots" selected="selected">Tots</option></select><div class="selectize-control single plugin-selectize-plugin-a11y"><div class="selectize-input items full has-options has-items"><div class="item" data-value="Tots">Tots</div><input type="text" autocomplete="off" tabindex="" id="districteT-selectized" role="combobox" aria-expanded="false" haspopup="listbox" aria-owns="gz0n9mwq8b" style="width: 4px;"></div><div class="selectize-dropdown single plugin-selectize-plugin-a11y" style="display: none;"><div class="selectize-dropdown-content" role="listbox" id="gz0n9mwq8b"></div></div></div>
+                          <script type="application/json" data-for="districteT" data-nonempty="">{"plugins":["selectize-plugin-a11y"]}</script>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div id="selectionTaulaBarri" class="shiny-html-output shiny-bound-output" aria-live="polite"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="tableAlquiler" class="shiny-datatable-output shiny-bound-output" aria-live="polite"></div>
+              <a id="downloadData" class="btn btn-default shiny-download-link shiny-bound-output" href="http://127.0.0.1:3817/" target="_blank" download="" aria-live="polite">
+                <i class="fas fa-download" role="presentation" aria-label="download icon"></i>
+                Download
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+<div aria-live="assertive" role="log" aria-relevant="additions" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin-top: -1px; clip: rect(1px, 1px, 1px, 1px); overflow: hidden;"></div><div aria-live="assertive" role="log" aria-relevant="additions" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin-top: -1px; clip: rect(1px, 1px, 1px, 1px); overflow: hidden;"></div><div aria-live="assertive" role="log" aria-relevant="additions" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin-top: -1px; clip: rect(1px, 1px, 1px, 1px); overflow: hidden;"></div><div aria-live="assertive" role="log" aria-relevant="additions" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin-top: -1px; clip: rect(1px, 1px, 1px, 1px); overflow: hidden;"></div><div aria-live="assertive" role="log" aria-relevant="additions" aria-atomic="true" style="position: absolute; width: 1px; height: 1px; margin-top: -1px; clip: rect(1px, 1px, 1px, 1px); overflow: hidden;"></div></body></html>
